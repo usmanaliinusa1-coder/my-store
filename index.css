@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
+  body { @apply bg-white text-gray-900 antialiased; }
+  :focus-visible { @apply outline-none ring-2 ring-brand-600 ring-offset-2; }
+  img { @apply max-w-full; }
+}
+
+@layer utilities {
+  .pb-safe,
+  .safe-bottom,
+  .safe-area { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

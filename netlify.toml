@@ -1,0 +1,21 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Local testing of the payment functions:  npx netlify-cli dev   (serves the site + functions on :8888)
+[dev]
+  command = "npm run dev"
+  targetPort = 5173
+  port = 8888
+  framework = "#custom"
+
+# Single-page-app fallback: React Router routes keep working on refresh.
+# (/.netlify/functions/* is served by Netlify Functions before this rule applies.)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
